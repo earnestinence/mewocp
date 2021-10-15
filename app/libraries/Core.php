@@ -15,15 +15,15 @@ class Core
         //print_r($this->getURL());
         $url = $this->getURL();
 
-        // Look in controls for first value
-        if (file_exists('../app/controls/' . ucwords($url[0]) . '.php')){
+        // Look in controllers for first value
+        if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php')){
             // If exists, set as current controller
             $this->currentControl = ucwords($url[0]);
             // unset 0 Index
             unset($url[0]);
         }
-        // Require the controls
-        require_once '../app/controls/'. $this->currentControl . '.php';
+        // Require the controllers
+        require_once '../app/controllers/'. $this->currentControl . '.php';
 
         // Instantiate control class
         $this->currentControl = new $this->currentControl;
